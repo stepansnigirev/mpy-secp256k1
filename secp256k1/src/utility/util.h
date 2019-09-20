@@ -13,6 +13,11 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "py/gc.h"
+
+#define malloc(b) gc_alloc((b), 0)
+#define free gc_free
+
 typedef struct {
     void (*fn)(const char *text, void* data);
     const void* data;
